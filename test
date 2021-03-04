@@ -1,6 +1,6 @@
 #java
 
-...
+'''
 import java.util.Scanner;
 class circle
 {
@@ -17,4 +17,4 @@ class circle
       System.out.println("Circle surface area is : " +area);
    }
 }
-...
+'''
