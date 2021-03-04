@@ -1,0 +1,20 @@
+#java
+
+...
+import java.util.Scanner;
+class circle
+{
+   static Scanner sc = new Scanner(System.in);
+   public static void main(String args[])
+   {
+      System.out.print("Enter The Radius Of Circle: ");
+      double r = sc.nextDouble();
+      
+   double volume =(4*Math.PI*r*r*r)/3;
+      System.out.println("Circle volume is : " + volume);
+   
+   double area =(4*Math.PI*r*r);
+      System.out.println("Circle surface area is : " +area);
+   }
+}
+...
