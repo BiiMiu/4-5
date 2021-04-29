@@ -1,5 +1,6 @@
 [1]舉例說明　傳值呼叫(call by value)　與　參考呼叫(call by reference)
-傳值呼叫 當值指向新的變數時 會新增新的值 讓後來的變數指向新的值
+當我們創造變數並給值時，變數會指向值在電腦記憶體中的位置，若我們以這個值為參照，
+指定另一個變數指向這個值時，電腦會在記憶體中新增(複製)一個新值，讓後來的這個變數指向新的值。
 
 public static void main (String[]args){
 int a=10,b=15;
@@ -16,7 +17,8 @@ System.out.println("傳值呼叫中\t x+"+x+"\t y ="+y);
 }
 }
 
-參考呼叫 值與被呼叫的變數 因為使用相同記憶體 所以 當值與被呼叫的變數改變時另一個內容也會改變
+參考呼叫 
+物件存放的記憶體位置，而存在這個變數內的就是這個「記憶體位置」。因此這個「以記憶體位置為參考」而在變數間傳遞的存取行為
 
 class Obj{
 int a,b;
@@ -72,16 +74,16 @@ public class addNum{
 import java.util.HashMap;
 import java.util.Map;
  
-public class DynamicProgramming {
-    static Map<Integer, Long> map = new HashMap<Integer, Long>() {{ put(0, 0L); put(1, 1L); }};
+ 
+public class IterativeDynamicProgramming {
     public static long Fibonacci(int n)
     {
-        if (map.containsKey(n))
-            return map.get(n);
-        map.put(n, Fibonacci(n - 1) + Fibonacci(n - 2));
+        Map<Integer, Long> map = new HashMap<Integer, Long>() {{ put(0, 0L); put(1, 1L); }};
+         
+        for (int i = 2; i <= n; ++i)
+            map.put(i, map.get(i - 1) + map.get(i - 2));
         return map.get(n);
     }
-
 }
 
 (2)請使用 iterative方法算出費氏數列。
