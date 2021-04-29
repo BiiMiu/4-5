@@ -16,6 +16,10 @@ y=t;
 System.out.println("傳值呼叫中\t x+"+x+"\t y ="+y);
 }
 }
+# 結果
+傳值呼叫前 a=10 b=15
+傳值呼叫中 x=15 y=10
+傳值呼叫後 a=10 b=15
 
 參考呼叫 
 物件存放的記憶體位置，而存在這個變數內的就是這個「記憶體位置」。因此這個「以記憶體位置為參考」而在變數間傳遞的存取行為
@@ -40,7 +44,9 @@ t=p.a;
 p.a=p.b;
 p.b=t;
 }
-
+#結果
+參考呼叫前 a=10 b=15
+參考呼叫後 a=15 b=10
 [2]舉例說明　方法多載
 
 多個名稱相同但參數個數或型別不同的方法 依傳入參數的個數 型別與順序決定使用哪一個方法
@@ -75,7 +81,7 @@ import java.util.Scanner;
 
 public class test {
 
-public static void main(String args[])test {
+public static void main(String args[]){
  	int num ;
  	Scanner s = new Scanner(System.in);
  	System.out.print("請輸入費氏數列項數n：");
@@ -84,7 +90,7 @@ public static void main(String args[])test {
 }
 public static int fib(int n) {
 
-switch (n) 
+switch (n) {
     case 0:
         return 0;
     case 1:
@@ -92,6 +98,7 @@ switch (n)
     default:
         return fib(n - 1) + fib(n - 2);
 }
+} 
 }
 
 (2)請使用 iterative方法算出費氏數列。
@@ -100,24 +107,24 @@ import java.util.Scanner;
 
 public class test {
 
-public static void main(String args[])test {
+public static void main(String args[]) {
  	int num ;
  	Scanner s = new Scanner(System.in);
- 	System.out.print("請輸入費氏數列項數n：");
+ 	System.out.print("計算費氏數列的第X項，請輸入X：");
  	num = s.nextInt();
- 	System.out.println("費氏數列第"+num+"項數的值為"+fib(num));
+ 	System.out.println("費氏數列的第"+num+"項:"+fib(num));
 }
 public static int fib(int n) {
 
 int init = 0;
 int accumulator = 1;
 
-for (int t = 0; t < n; ++t) {
-    int n = accumulator;
+for (int t = 1; t < n; ++t) {
+    int temp = accumulator;
     accumulator += init;
 
-    init = n;
+    init = temp;
 }
 
-return init;
-}
+return accumulator;
+} }
