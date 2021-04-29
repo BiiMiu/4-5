@@ -1,6 +1,6 @@
 [1]舉例說明　傳值呼叫(call by value)　與　參考呼叫(call by reference)
 傳值呼叫 當值指向新的變數時 會新增新的值 讓後來的變數指向新的值
-public static void main (String[]args){
+"" public static void main (String[]args){
 int a=10,b=15;
 System.out,println("傳值呼叫前\t a ="+a+"\t b="+b);
 byVal(a,b);
@@ -13,7 +13,7 @@ x=y;
 y=t;
 System.out.println("傳值呼叫中\t x+"+x+"\t y ="+y);
 }
-}
+}""
 參考呼叫 值與被呼叫的變數 因為使用相同記憶體 所以 當值與被呼叫的變數改變時另一個內容也會改變
 class Obj{
 int a,b;
