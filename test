@@ -71,35 +71,53 @@ public class addNum{
  ---------------------------------------------------------------------------
  (1)請使用靜態遞迴方法算出費氏數列。
 
-import java.util.HashMap;
-import java.util.Map;
- 
- 
-public class IterativeDynamicProgramming {
-    public static long Fibonacci(int n)
-    {
-        Map<Integer, Long> map = new HashMap<Integer, Long>() {{ put(0, 0L); put(1, 1L); }};
-         
-        for (int i = 2; i <= n; ++i)
-            map.put(i, map.get(i - 1) + map.get(i - 2));
-        return map.get(n);
-    }
+import java.util.Scanner;
+
+public class test {
+
+public static void main(String args[])test {
+ 	int num ;
+ 	Scanner s = new Scanner(System.in);
+ 	System.out.print("請輸入費氏數列項數n：");
+ 	num = s.nextInt();
+ 	System.out.println("費氏數列第"+num+"項數的值為"+fib(num));
+}
+public static int fib(int n) {
+
+switch (n) 
+    case 0:
+        return 0;
+    case 1:
+        return 1;
+    default:
+        return fib(n - 1) + fib(n - 2);
+}
 }
 
 (2)請使用 iterative方法算出費氏數列。
 
-public class Iterative {
-    public static long Fibonacci(int n)
-    {
-        long v1 = 0;
-        long v2 = 1;
-        long result = n;
-        for (int i = 2; i <= n; ++i)
-        {
-            result = v2 + v1;
-            v1 = v2;
-            v2 = result;
-        }
-        return result;
-    }
+import java.util.Scanner;
+
+public class test {
+
+public static void main(String args[])test {
+ 	int num ;
+ 	Scanner s = new Scanner(System.in);
+ 	System.out.print("請輸入費氏數列項數n：");
+ 	num = s.nextInt();
+ 	System.out.println("費氏數列第"+num+"項數的值為"+fib(num));
+}
+public static int fib(int n) {
+
+int init = 0;
+int accumulator = 1;
+
+for (int t = 0; t < n; ++t) {
+    int n = accumulator;
+    accumulator += init;
+
+    init = n;
+}
+
+return init;
 }
