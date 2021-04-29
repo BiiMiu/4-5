@@ -1,20 +1,94 @@
-#java
-
-'''
-import java.util.Scanner;
-class circle
-{
-   static Scanner sc = new Scanner(System.in);
-   public static void main(String args[])
-   {
-      System.out.print("Enter The Radius Of Circle: ");
-      double r = sc.nextDouble();
-      
-   double volume =(4*Math.PI*r*r*r)/3;
-      System.out.println("Circle volume is : " + volume);
-   
-   double area =(4*Math.PI*r*r);
-      System.out.println("Circle surface area is : " +area);
-   }
+[1]舉例說明　傳值呼叫(call by value)　與　參考呼叫(call by reference)
+傳值呼叫 當值指向新的變數時 會新增新的值 讓後來的變數指向新的值
+public static void main (String[]args){
+int a=10,b=15;
+System.out,println("傳值呼叫前\t a ="+a+"\t b="+b);
+byVal(a,b);
+System.out.println(傳值呼叫後\t a="+a+"\t b="+b);
 }
-'''
+static void byVal(int x,int y){
+int t;
+t=x;
+x=y;
+y=t;
+System.out.println("傳值呼叫中\t x+"+x+"\t y ="+y);
+}
+}
+參考呼叫 值與被呼叫的變數 因為使用相同記憶體 所以 當值與被呼叫的變數改變時另一個內容也會改變
+class Obj{
+int a,b;
+Obj(){
+a=10;
+b=15;
+}
+}
+public class CallByRef{
+public Static void main(String [] args){
+Obj obj=new Obj();
+Ststem.out.println("參考呼叫前\t a="+obj,a+"\tb="+obj.b);
+byRef(obj);
+Ststem.out.println("參考呼叫後\t a="+obj,a+"\tb="+obj.b);
+}
+Static void byRef(Obj p){
+int t;
+t=p.a;
+p.a=p.b;
+p.b=t;
+}
+[2]舉例說明　方法多載
+多個名稱相同但參數個數或型別不同的方法 依傳入參數的個數 型別與順序決定使用哪一個方法
+void methed(){}
+int methed(){}                //不能多載:雖然傳回值不同但引數個數相同
+void methed(int a){}          //成功多載:比第一行的方法多一個引數
+void methed(int b){}          //不能多載:引數名稱不同,但和第三行的型別和個數相同
+void methed(String s){}       //成功多載:雖然和第三行引數個數相同但型別不同
+void methed(int a,String s){} //成功多載:引數個數和型別都不同
+void methed(String s,int a){} //成功多載:和第六行引數個數和型別相同但順序不同
+
+public class addNum{
+ public static void main (string [] args){
+ int total1,x=17,y=28;
+ double total2,i=3.8,j=22.7,k=15.1;
+ total1=add(x,y);
+ total2=add(i,j,k);
+ System.out.printf("%d%n",total1);
+ System.out.printf("%f%n",total2);
+ }
+ static int add(int a,int b){
+ return a+b;
+ }
+ static int add(double a,double b,double c){
+ return a+b+c;
+ }
+ }
+ ---------------------------------------------------------------------------
+ (1)請使用靜態遞迴方法算出費氏數列。
+ import java.util.HashMap;
+import java.util.Map;
+ 
+public class DynamicProgramming {
+    static Map<Integer, Long> map = new HashMap<Integer, Long>() {{ put(0, 0L); put(1, 1L); }};
+    public static long Fibonacci(int n)
+    {
+        if (map.containsKey(n))
+            return map.get(n);
+        map.put(n, Fibonacci(n - 1) + Fibonacci(n - 2));
+        return map.get(n);
+    }
+}
+ (2)請使用 iterative方法算出費氏數列。
+ public class Iterative {
+    public static long Fibonacci(int n)
+    {
+        long v1 = 0;
+        long v2 = 1;
+        long result = n;
+        for (int i = 2; i <= n; ++i)
+        {
+            result = v2 + v1;
+            v1 = v2;
+            v2 = result;
+        }
+        return result;
+    }
+}
